@@ -15,6 +15,6 @@ class TrendingRepositoriesUseCase @Inject constructor(
         private val repositoryGateway: RepositoryGateway
 ) : UseCase<List<GithubRepository>, Nothing>(schedulers) {
 
-    override fun buildUseCaseObservable(params: Nothing?): Observable<List<GithubRepository>> = repositoryGateway.getProjects()
+    public override fun buildUseCaseObservable(params: Nothing?): Observable<List<GithubRepository>> = repositoryGateway.getProjects()
 
 }
