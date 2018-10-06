@@ -3,16 +3,25 @@ apply plugin: 'kotlin'
 
 dependencies {
 
-    def domainDependencies = rootProject.ext.domainDependencies
-    def domainTestDependencies = rootProject.ext.domainTestDependencies
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
 
-    implementation domainDependencies.javaxAnnotation
-    implementation domainDependencies.javaxInject
-    implementation domainDependencies.rxJava
+    compile project(':domain')
 
-    testImplementation domainTestDependencies.mockito
-    testImplementation domainTestDependencies.assertj
-    testImplementation domainTestDependencies.junit
+    implementation dataDependencies.javaxAnnotation
+    implementation dataDependencies.javaxInject
+    implementation dataDependencies.rxKotlin
+
+    implementation dataDependencies.gson
+    implementation dataDependencies.okHttp
+    implementation dataDependencies.okHttpLogger
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitConverter
+    implementation dataDependencies.retrofitAdapter
+
+    testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.mockito
+    testImplementation dataTestDependencies.assertj
 
 }
 

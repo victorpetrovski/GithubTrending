@@ -1,6 +1,6 @@
 package com.victor.domain.data
 
-import com.victor.domain.model.GithubRepository
+import com.victor.domain.model.GithubRepositoryEntity
 import java.util.*
 
 /**
@@ -20,12 +20,12 @@ object DataFactory {
         return Math.random().toLong()
     }
 
-    fun makeProject(): GithubRepository {
-        return GithubRepository(randomString())
+    fun makeProject(): GithubRepositoryEntity {
+        return GithubRepositoryEntity(randomString(), randomString(), randomLong(), randomString())
     }
 
-    fun makeProjectsList(count: Int): List<GithubRepository> {
-        val projects = mutableListOf<GithubRepository>()
+    fun makeProjectsList(count: Int): List<GithubRepositoryEntity> {
+        val projects = mutableListOf<GithubRepositoryEntity>()
 
         repeat(count) {
             projects.add(makeProject())

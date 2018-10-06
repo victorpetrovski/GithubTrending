@@ -5,7 +5,7 @@ import com.nhaarman.mockito_kotlin.whenever
 import com.victor.domain.data.DataFactory
 import com.victor.domain.executor.Schedulers
 import com.victor.domain.gateway.RepositoryGateway
-import com.victor.domain.model.GithubRepository
+import com.victor.domain.model.GithubRepositoryEntity
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
@@ -56,7 +56,7 @@ class DetailsRepositoryTest {
         testObserver.assertComplete()
     }
 
-    private fun mockGatewayCall(id : Long,observable : Observable<GithubRepository>) =
+    private fun mockGatewayCall(id : Long,observable : Observable<GithubRepositoryEntity>) =
             whenever(repositoryGateway.getProjectById(id)).thenReturn(observable)
 
 

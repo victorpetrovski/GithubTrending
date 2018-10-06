@@ -2,7 +2,7 @@ package com.victor.domain.usecase
 
 import com.victor.domain.executor.Schedulers
 import com.victor.domain.gateway.RepositoryGateway
-import com.victor.domain.model.GithubRepository
+import com.victor.domain.model.GithubRepositoryEntity
 import com.victor.domain.usecase.base.UseCase
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -13,8 +13,8 @@ import javax.inject.Inject
 class TrendingRepositoriesUseCase @Inject constructor(
         private val schedulers: Schedulers,
         private val repositoryGateway: RepositoryGateway
-) : UseCase<List<GithubRepository>, Nothing>(schedulers) {
+) : UseCase<List<GithubRepositoryEntity>, Nothing>(schedulers) {
 
-    public override fun buildUseCaseObservable(params: Nothing?): Observable<List<GithubRepository>> = repositoryGateway.getProjects()
+    public override fun buildUseCaseObservable(params: Nothing?): Observable<List<GithubRepositoryEntity>> = repositoryGateway.getProjects()
 
 }

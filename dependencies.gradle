@@ -7,10 +7,16 @@ ext{
     androidCompileSdkVersion = 28
     kotlinVersion = '1.2.50'
 
-    //Librarie
+    //Libraries
     rxJavaVersion = '2.0.2'
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
+    rxKotlinVersion = '2.1.0'
+    //Network
+    okHttpVersion = '3.8.1'
+    retrofitVersion = '2.3.0'
+    gsonVersion = '2.8.1'
+    gsonVersion = '2.8.1'
 
     //Testing
     jUnitVersion = '4.12'
@@ -29,5 +35,23 @@ ext{
             assertj: "org.assertj:assertj-core:${assertJVersion}"
     ]
 
+
+    dataDependencies = [
+            javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxKotlin          : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            okHttp            : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            gson              : "com.google.code.gson:gson:${gsonVersion}",
+            okHttpLogger      : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            retrofit          : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapter   : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+    ]
+
+    dataTestDependencies = [
+            junit  : "junit:junit:${jUnitVersion}",
+            mockito: "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj: "org.assertj:assertj-core:${assertJVersion}"
+    ]
 
 }
