@@ -5,5 +5,10 @@ package com.victor.domain.model
  */
 
 data class GithubRepositoryEntity(
-        val name : String, val  link : String, val  id : Long,
-        val description : String)
+        val repositoryName : String,
+        val  link : String, val  id : Long,
+        val ownerAvatar : String,
+        val ownerName : String,
+        val stars : Long,
+        val description : String,
+        val createdAt : String)

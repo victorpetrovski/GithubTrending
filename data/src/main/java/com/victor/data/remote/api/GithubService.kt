@@ -4,6 +4,7 @@ import com.victor.data.model.GithubProjectModel
 import com.victor.data.model.GithubResponseDataModel
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -17,4 +18,6 @@ interface GithubService {
                            @Query("order") order: String)
             : Observable<GithubResponseDataModel>
 
+    @GET("repos/{owner}/{repo}")
+    fun getRepositoryDetails(@Path("owner") name: String,@Path("repo") repo: String) : Observable<GithubProjectModel>
 }

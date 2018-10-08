@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">XapoGithubTrending</string>
+    <string name="title_activity_github_list">Android Trending</string>
+    <string name="empty_screen">Network error\nTap to retry.</string>
+    <string name="close">Close</string>
+    <string name="title_activity_github_repository_details">GithubRepositoryDetails</string>
+</resources>

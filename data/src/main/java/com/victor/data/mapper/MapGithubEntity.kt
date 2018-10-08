@@ -10,7 +10,7 @@ import javax.inject.Inject
 open class MapGithubEntity @Inject constructor() : ModelMapper<GithubProjectModel,GithubRepositoryEntity>{
 
     override fun mapFromModel(model: GithubProjectModel): GithubRepositoryEntity {
-        return GithubRepositoryEntity(model.name,model.link,model.id,model.description)
+        return GithubRepositoryEntity(model.name,model.link,model.id,model.owner.avatar,model.owner.name, model.stars ,model.description,model.createdAt)
     }
 
 }

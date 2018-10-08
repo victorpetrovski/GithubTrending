@@ -26,7 +26,7 @@ class MapGithubEntityTest {
         assertEquals(model.id,entity.id)
         assertEquals(model.description,entity.description)
         assertEquals(model.link,entity.link)
-        assertEquals(model.name,entity.name)
+        assertEquals(model.name,entity.repositoryName)
 
     }
 

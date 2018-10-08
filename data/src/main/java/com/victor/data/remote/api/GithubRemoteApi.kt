@@ -1,6 +1,9 @@
 package com.victor.data.remote.api
 
 import com.google.gson.Gson
+import com.victor.data.model.GithubProjectModel
+import com.victor.data.model.GithubResponseDataModel
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +15,9 @@ import javax.inject.Inject
 /**
  * Created by victor on 10/5/18
  */
-class GithubRemoteApi @Inject constructor(private val baseUrl : String, private  val isDebug : Boolean) {
+class GithubRemoteApi @Inject constructor(private val baseUrl : String, private  val isDebug : Boolean) : GithubService {
+
+
 
     private lateinit var githubService: GithubService
 
@@ -54,5 +59,17 @@ class GithubRemoteApi @Inject constructor(private val baseUrl : String, private 
         }
         return logging
     }
+
+    /**
+     *
+     * API Requests
+     *
+     * */
+
+
+    override fun searchRepositories(query: String, sortBy: String, order: String) = githubService.searchRepositories(query,sortBy,order)
+
+    override fun getRepositoryDetails(name: String, repo: String)
+            = githubService.getRepositoryDetails(name,repo)
 
 }

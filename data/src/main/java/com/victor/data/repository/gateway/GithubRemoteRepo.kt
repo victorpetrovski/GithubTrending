@@ -10,6 +10,6 @@ interface GithubRemoteRepo {
 
     fun getTrendingAndroidProjects(): Observable<List<GithubRepositoryEntity>>
 
-    fun getProjectById( id : Long) : Observable<GithubRepositoryEntity>
+    fun getSingleProjectRepository(ownerName : String, name : String) : Observable<GithubRepositoryEntity>
 
 }

@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.androidTargetSdkVersion
+    defaultConfig {
+        applicationId "com.victor.xapogithubtrending"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+
+    implementation project(':domain')
+    implementation project(':data')
+
+    implementation presentationDependencies.javaxInject
+    implementation presentationDependencies.rxKotlin
+    implementation presentationDependencies.androidAnnotations
+    implementation presentationDependencies.androidSupportV4
+    implementation presentationDependencies.appCompatV7
+    implementation presentationDependencies.supportRecyclerView
+    implementation presentationDependencies.supportDesign
+    implementation presentationDependencies.rxAndroid
+    implementation presentationDependencies.glide
+    implementation presentationDependencies.dagger
+    implementation presentationDependencies.daggerSupport
+    implementation presentationDependencies.cardView
+
+    kapt presentationDependencies.daggerCompiler
+    kapt presentationDependencies.daggerProcessor
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'kotlin-android-extensions'

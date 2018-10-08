@@ -21,7 +21,7 @@ object DataFactory {
     }
 
     fun makeProject(): GithubRepositoryEntity {
-        return GithubRepositoryEntity(randomString(), randomString(), randomLong(), randomString())
+        return GithubRepositoryEntity(randomString(), randomString(), randomLong(), randomString(), randomString(), randomLong(), randomString(), randomString())
     }
 
     fun makeProjectsList(count: Int): List<GithubRepositoryEntity> {

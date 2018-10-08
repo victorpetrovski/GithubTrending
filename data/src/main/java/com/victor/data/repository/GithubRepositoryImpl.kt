@@ -1,7 +1,7 @@
 package com.victor.data.repository
 
 import com.victor.data.repository.gateway.GithubRemoteRepo
-import com.victor.domain.gateway.RepositoryGateway
+import com.victor.domain.gateway.GithubRepositoryGateway
 import com.victor.domain.model.GithubRepositoryEntity
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -11,10 +11,11 @@ import javax.inject.Inject
  */
 class GithubRepositoryImpl @Inject constructor(
         private val githubRemoteRepo: GithubRemoteRepo
-) : RepositoryGateway {
+) : GithubRepositoryGateway {
 
     override fun getProjects(): Observable<List<GithubRepositoryEntity>> = githubRemoteRepo.getTrendingAndroidProjects()
 
 
-    override fun getProjectById(id: Long): Observable<GithubRepositoryEntity> = githubRemoteRepo.getProjectById(id)
+    override fun getProjectByName(ownerName : String,name : String): Observable<GithubRepositoryEntity>
+            = githubRemoteRepo.getSingleProjectRepository(ownerName,name)
 }

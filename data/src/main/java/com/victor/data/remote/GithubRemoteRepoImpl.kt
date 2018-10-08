@@ -15,13 +15,16 @@ open class GithubRemoteRepoImpl @Inject constructor(
         private val mapGithubEntity: MapGithubEntity
 ) : GithubRemoteRepo {
 
+    override fun getSingleProjectRepository(ownerName: String, name: String): Observable<GithubRepositoryEntity> {
+        return githubService.getRepositoryDetails(ownerName,name).map {
+            mapGithubEntity.mapFromModel(it)
+        }
+    }
+
     override fun getTrendingAndroidProjects(): Observable<List<GithubRepositoryEntity>> {
         return githubService.searchRepositories("android","stars","desc").map {
             it.list.map { mapGithubEntity.mapFromModel(it) }
         }
     }
 
-    override fun getProjectById(id: Long): Observable<GithubRepositoryEntity> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 }

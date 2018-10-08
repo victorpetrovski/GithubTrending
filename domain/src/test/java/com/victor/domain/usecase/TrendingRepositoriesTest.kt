@@ -3,7 +3,7 @@ package com.victor.domain.usecase
 import com.nhaarman.mockito_kotlin.whenever
 import com.victor.domain.data.DataFactory
 import com.victor.domain.executor.Schedulers
-import com.victor.domain.gateway.RepositoryGateway
+import com.victor.domain.gateway.GithubRepositoryGateway
 import com.victor.domain.model.GithubRepositoryEntity
 import io.reactivex.Observable
 import org.junit.Before
@@ -21,7 +21,7 @@ class TrendingRepositoriesTest {
 
 
     @Mock
-    lateinit var repositoryGateway: RepositoryGateway
+    lateinit var repositoryGateway: GithubRepositoryGateway
 
     @Mock
     lateinit var schedulers: Schedulers

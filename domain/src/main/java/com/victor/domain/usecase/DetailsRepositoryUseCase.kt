@@ -1,7 +1,7 @@
 package com.victor.domain.usecase
 
 import com.victor.domain.executor.Schedulers
-import com.victor.domain.gateway.RepositoryGateway
+import com.victor.domain.gateway.GithubRepositoryGateway
 import com.victor.domain.model.GithubRepositoryEntity
 import com.victor.domain.usecase.base.UseCase
 import io.reactivex.Observable
@@ -12,14 +12,14 @@ import javax.inject.Inject
  */
 class DetailsRepositoryUseCase @Inject constructor(
         private val schedulers: Schedulers,
-        private val repositoryGateway: RepositoryGateway
+        private val repositoryGateway: GithubRepositoryGateway
 ) : UseCase<GithubRepositoryEntity,DetailsRepositoryUseCase.Params>(schedulers) {
 
     public override fun buildUseCaseObservable(params: Params?): Observable<GithubRepositoryEntity> {
-        if (params == null) throw IllegalArgumentException("Repository Id can't be null")
+        if (params == null) throw IllegalArgumentException("Repository Name can't be null")
 
-        return repositoryGateway.getProjectById(params.repoId)
+        return repositoryGateway.getProjectByName(params.ownerName,params.repoName)
     }
 
-    data class Params(val repoId : Long)
+    data class Params(val ownerName : String,val repoName : String)
 }
