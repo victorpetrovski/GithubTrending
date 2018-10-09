@@ -1,5 +1,7 @@
 package com.victor.xapogithubtrending.features.repository_list
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -33,6 +35,7 @@ class GithubListActivity : BaseActivity() {
     override fun getLayout() = R.layout.activity_github_list
 
     override fun setupViews(savedInstanceState: Bundle?) {
+
         setSupportActionBar(toolbar)
         setupRecyclerView()
 

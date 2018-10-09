@@ -76,6 +76,7 @@ ext{
             archRuntime        : "android.arch.lifecycle:runtime:${archCompVersion}",
             archExtensions     : "android.arch.lifecycle:extensions:${archCompVersion}",
             archCompiler       : "android.arch.lifecycle:compiler:${archCompVersion}",
+            archViewModel      : "android.arch.lifecycle:viewmodel:${archCompVersion}",
             glide              : "com.github.bumptech.glide:glide:${glideVersion}",
             androidSupportV4   : "com.android.support:support-v4:${supportLibraryVersion}",
             constraintLayout   : "com.android.support.constraint:constraint-layout:${constraintLayout}",

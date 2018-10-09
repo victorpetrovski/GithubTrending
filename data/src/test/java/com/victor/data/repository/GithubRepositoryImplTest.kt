@@ -27,7 +27,7 @@ class GithubRepositoryImplTest {
     }
 
     @Test
-    fun githubRepositoryDataCompleteTest(){
+    fun githubRepositoryTrendingDataCompleteTest(){
 
         whenever(githubRemoteRepoImpl.getTrendingAndroidProjects()).thenReturn(Observable.just(DataFactory.makeGithubEntityList(5)))
 
@@ -38,7 +38,7 @@ class GithubRepositoryImplTest {
     }
 
     @Test
-    fun githubRepositoryDataValueTest(){
+    fun githubRepositoryTrendingDataValueTest(){
 
         val listData = DataFactory.makeGithubEntityList(5)
         whenever(githubRemoteRepoImpl.getTrendingAndroidProjects())
@@ -47,6 +47,22 @@ class GithubRepositoryImplTest {
         val test = githubRepositoryImpl.getProjects().test()
 
         test.assertValue(listData)
+    }
+
+    @Test
+    fun githubRepositoryDetailsValueTest(){
+        val repoEntity = DataFactory.makeGithubRepoEntity()
+
+        val owner = DataFactory.randomString()
+        val repoName = DataFactory.randomString()
+
+        whenever(githubRemoteRepoImpl.getSingleProjectRepository(owner,repoName))
+                .thenReturn(Observable.just(repoEntity))
+
+        val test = githubRepositoryImpl.getProjectByName(owner,repoName).test()
+
+        test.assertValue(repoEntity)
+
     }
 
 

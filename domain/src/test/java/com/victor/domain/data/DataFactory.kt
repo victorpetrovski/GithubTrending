@@ -20,8 +20,13 @@ object DataFactory {
         return Math.random().toLong()
     }
 
+    fun randomInt(): Int {
+        return Math.random().toInt()
+    }
+
     fun makeProject(): GithubRepositoryEntity {
-        return GithubRepositoryEntity(randomString(), randomString(), randomLong(), randomString(), randomString(), randomLong(), randomString(), randomString())
+        return GithubRepositoryEntity(randomString(), randomString(), randomLong(), randomString(),
+                randomString(), randomLong(), randomString(), randomString(), randomInt(), randomInt())
     }
 
     fun makeProjectsList(count: Int): List<GithubRepositoryEntity> {

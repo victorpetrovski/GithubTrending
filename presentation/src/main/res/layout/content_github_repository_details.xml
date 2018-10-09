@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fafbfc"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".features.repository_details.GithubRepositoryDetailsActivity"
     tools:showIn="@layout/activity_github_repository_details">
@@ -14,31 +15,143 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:layout_centerInParent="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/cl_holder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_margin="8dp"
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_creation_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="492dp"
-            android:layout_marginEnd="383dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_access_time_black_24dp"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_owner_avatar"
+            app:layout_constraintEnd_toStartOf="@+id/ll_stars_count"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iv_owner_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_project_name"
+            tools:text="Date" />
+
+        <ImageView
+            android:id="@+id/iv_owner_avatar"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/ll_stars_count"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iv_owner_avatar"
+            app:layout_constraintTop_toTopOf="@+id/iv_owner_avatar"
+            tools:text="Victor Petrovski" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_project_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/ll_stars_count"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/iv_owner_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_owner_name"
+            tools:text="Some project" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/iv_owner_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/iv_owner_avatar" />
+
+
+        <com.victor.xapogithubtrending.view.RepositoryInfoView
+            android:id="@+id/repository_info_cell_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_description"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+
+        <com.victor.xapogithubtrending.view.RepositoryInfoView
+            android:id="@+id/repository_info_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/repository_info_fork"
+            app:layout_constraintStart_toEndOf="@+id/repository_info_cell_watch"
+            app:layout_constraintTop_toTopOf="@+id/repository_info_cell_watch" />
+
+
+        <com.victor.xapogithubtrending.view.RepositoryInfoView
+            android:id="@+id/repository_info_fork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/repository_info_cell_watch" />
+
+        <TextView
+            android:id="@+id/tv_contributors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/contributors"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/repository_info_cell_watch"
+            app:layout_constraintTop_toBottomOf="@+id/repository_info_cell_watch" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_contributors"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contributors" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

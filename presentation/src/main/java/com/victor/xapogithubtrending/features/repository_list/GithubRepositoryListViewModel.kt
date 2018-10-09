@@ -28,7 +28,14 @@ class GithubRepositoryListViewModel @Inject constructor(
     fun getLiveData() = liveData
 
     fun loadGithubRepositories(){
-        liveData.postValue(ViewResource(ViewState.LOADING,null,null))
+
+        //We already have the data no need to make network call again
+        if(!repositoryList.isEmpty()){
+            liveData.postValue(ViewResource(ViewState.SUCCESS,repositoryList,null))
+            return
+        }
+
+        liveData.postValue(ViewResource(ViewState.LOADING,repositoryList,null))
         val disposable = trendingRepositoriesUseCase
                 .execute()
                 .subscribeOn(schedulers.subscribeOn)

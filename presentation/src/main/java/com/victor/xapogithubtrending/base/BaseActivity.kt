@@ -21,4 +21,9 @@ abstract  class BaseActivity : AppCompatActivity() , Injectable {
     abstract fun setupViews(savedInstanceState: Bundle?)
 
     fun parentLayout() = findViewById<View>(android.R.id.content)
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

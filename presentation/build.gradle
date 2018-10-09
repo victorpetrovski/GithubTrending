@@ -43,6 +43,9 @@ dependencies {
     implementation presentationDependencies.dagger
     implementation presentationDependencies.daggerSupport
     implementation presentationDependencies.cardView
+    implementation presentationDependencies.archExtensions
+    implementation presentationDependencies.archViewModel
+
 
     kapt presentationDependencies.daggerCompiler
     kapt presentationDependencies.daggerProcessor

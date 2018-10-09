@@ -16,6 +16,7 @@
         <activity
             android:name=".features.repository_list.GithubListActivity"
             android:label="@string/title_activity_github_list"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +27,8 @@
         <activity
             android:name=".features.repository_details.GithubRepositoryDetailsActivity"
             android:label="@string/title_activity_github_repository_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

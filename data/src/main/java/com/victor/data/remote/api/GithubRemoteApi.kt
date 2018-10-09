@@ -3,6 +3,7 @@ package com.victor.data.remote.api
 import com.google.gson.Gson
 import com.victor.data.model.GithubProjectModel
 import com.victor.data.model.GithubResponseDataModel
+import com.victor.data.model.GithubUser
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -71,5 +72,7 @@ class GithubRemoteApi @Inject constructor(private val baseUrl : String, private 
 
     override fun getRepositoryDetails(name: String, repo: String)
             = githubService.getRepositoryDetails(name,repo)
+
+    override fun getRepositoryContributors(name: String, repo: String) = githubService.getRepositoryContributors(name,repo)
 
 }

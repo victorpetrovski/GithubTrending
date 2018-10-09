@@ -2,6 +2,7 @@ package com.victor.data.remote.api
 
 import com.victor.data.model.GithubProjectModel
 import com.victor.data.model.GithubResponseDataModel
+import com.victor.data.model.GithubUser
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,4 +21,9 @@ interface GithubService {
 
     @GET("repos/{owner}/{repo}")
     fun getRepositoryDetails(@Path("owner") name: String,@Path("repo") repo: String) : Observable<GithubProjectModel>
+
+    @GET("repos/{owner}/{repo}/contributors")
+    fun getRepositoryContributors(@Path("owner") name: String,@Path("repo") repo: String) : Observable<List<GithubUser>>
+
+
 }

@@ -11,4 +11,9 @@ data class GithubRepositoryEntity(
         val ownerName : String,
         val stars : Long,
         val description : String,
-        val createdAt : String)
+        val createdAt : String,
+        val forkCount : Int,
+        val watchCount : Int){
+
+    var repoContributors : List<GithubUserEntity>? = null
+}
