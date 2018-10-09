@@ -1,7 +1,7 @@
 package com.victor.xapogithubtrending.features.repository_list
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import android.support.annotation.VisibleForTesting
 import com.victor.domain.executor.Schedulers
 import com.victor.domain.usecase.TrendingRepositoriesUseCase
 import com.victor.xapogithubtrending.base.BaseViewModel
@@ -14,7 +14,7 @@ import javax.inject.Inject
 /**
  * Created by victor on 10/6/18
  */
-class GithubRepositoryListViewModel @Inject constructor(
+open class GithubRepositoryListViewModel @Inject constructor(
         private val schedulers: Schedulers,
         private val trendingRepositoriesUseCase: TrendingRepositoriesUseCase,
         private val entityViewMapper: EntityViewMapper
@@ -27,13 +27,16 @@ class GithubRepositoryListViewModel @Inject constructor(
 
     fun getLiveData() = liveData
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun getRepositoryList() = repositoryList
+
     fun loadGithubRepositories(){
 
         //We already have the data no need to make network call again
-        if(!repositoryList.isEmpty()){
-            liveData.postValue(ViewResource(ViewState.SUCCESS,repositoryList,null))
-            return
-        }
+//        if(!repositoryList.isEmpty()){
+//            liveData.postValue(ViewResource(ViewState.SUCCESS,repositoryList,null))
+//            return
+//        }
 
         liveData.postValue(ViewResource(ViewState.LOADING,repositoryList,null))
         val disposable = trendingRepositoriesUseCase

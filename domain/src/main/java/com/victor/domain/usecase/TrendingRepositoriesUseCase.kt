@@ -10,11 +10,11 @@ import javax.inject.Inject
 /**
  * Created by victor on 10/5/18
  */
-class TrendingRepositoriesUseCase @Inject constructor(
+open class TrendingRepositoriesUseCase @Inject constructor(
         private val schedulers: Schedulers,
         private val repositoryGateway: GithubRepositoryGateway
-) : UseCase<List<GithubRepositoryEntity>, Nothing>(schedulers) {
+) : UseCase<List<GithubRepositoryEntity>, Unit>(schedulers) {
 
-    public override fun buildUseCaseObservable(params: Nothing?): Observable<List<GithubRepositoryEntity>> = repositoryGateway.getProjects()
+    override fun buildUseCaseObservable(params: Unit?): Observable<List<GithubRepositoryEntity>> = repositoryGateway.getProjects()
 
 }

@@ -3,6 +3,7 @@ package com.victor.domain.usecase
 import com.nhaarman.mockito_kotlin.whenever
 import com.victor.domain.data.DataFactory
 import com.victor.domain.executor.Schedulers
+import com.victor.domain.executor.TestSchedulers
 import com.victor.domain.gateway.GithubRepositoryGateway
 import com.victor.domain.model.GithubRepositoryEntity
 import io.reactivex.Observable
@@ -23,9 +24,7 @@ class TrendingRepositoriesTest {
     @Mock
     lateinit var repositoryGateway: GithubRepositoryGateway
 
-    @Mock
-    lateinit var schedulers: Schedulers
-
+    val schedulers = TestSchedulers()
 
     @Before
     fun setup(){
@@ -36,7 +35,7 @@ class TrendingRepositoriesTest {
     @Test
     fun fetchGithubRepositoriesCallTest(){
         mockGatewayCall(Observable.just(DataFactory.makeProjectsList(5)))
-        val testObservable = trendingRepositoriesUseCase.buildUseCaseObservable().test()
+        val testObservable = trendingRepositoriesUseCase.execute().test()
         testObservable.assertComplete()
     }
 
@@ -44,7 +43,7 @@ class TrendingRepositoriesTest {
     fun githubRepositoriesDataValueTest(){
         val githubRepositories = DataFactory.makeProjectsList(5)
         mockGatewayCall(Observable.just(githubRepositories))
-        val testObservable = trendingRepositoriesUseCase.buildUseCaseObservable().test()
+        val testObservable = trendingRepositoriesUseCase.execute().test()
         testObservable.assertValue(githubRepositories)
     }
 

@@ -51,6 +51,12 @@ dependencies {
     kapt presentationDependencies.daggerProcessor
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    testImplementation presentationTestDependencies.junit
+    testImplementation presentationTestDependencies.kotlinJUnit
+    testImplementation presentationTestDependencies.mockito
+    testImplementation presentationTestDependencies.assertj
+    testImplementation presentationTestDependencies.archTesting
 }
 repositories {
     mavenCentral()

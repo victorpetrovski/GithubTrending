@@ -15,7 +15,7 @@ class DetailsRepositoryUseCase @Inject constructor(
         private val repositoryGateway: GithubRepositoryGateway
 ) : UseCase<GithubRepositoryEntity,DetailsRepositoryUseCase.Params>(schedulers) {
 
-    public override fun buildUseCaseObservable(params: Params?): Observable<GithubRepositoryEntity> {
+    override fun buildUseCaseObservable(params: Params?): Observable<GithubRepositoryEntity> {
         if (params == null) throw IllegalArgumentException("Repository Name can't be null")
 
         return repositoryGateway.getProjectByName(params.ownerName,params.repoName)

@@ -4,6 +4,7 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
 import com.victor.domain.data.DataFactory
 import com.victor.domain.executor.Schedulers
+import com.victor.domain.executor.TestSchedulers
 import com.victor.domain.gateway.GithubRepositoryGateway
 import com.victor.domain.model.GithubRepositoryEntity
 import io.reactivex.Observable
@@ -23,9 +24,7 @@ class DetailsRepositoryTest {
     @Mock
     lateinit var repositoryGateway: GithubRepositoryGateway
 
-    @Mock
-    lateinit var schedulers: Schedulers
-
+    val schedulers = TestSchedulers()
 
     @Before
     fun setup(){
@@ -38,7 +37,7 @@ class DetailsRepositoryTest {
         val repoName = DataFactory.randomString()
         val ownerName = DataFactory.randomString()
         mockGatewayCall(ownerName,repoName,Observable.just(DataFactory.makeProject()))
-        val testObservable = detailsRepositoryUseCase.buildUseCaseObservable(DetailsRepositoryUseCase.Params(ownerName,repoName)).test()
+        val testObservable = detailsRepositoryUseCase.execute(DetailsRepositoryUseCase.Params(ownerName,repoName)).test()
         testObservable.assertComplete()
     }
 
@@ -49,14 +48,14 @@ class DetailsRepositoryTest {
         val param = DetailsRepositoryUseCase.Params(ownerName,id)
         val projects = DataFactory.makeProject()
         mockGatewayCall(ownerName,id,Observable.just(projects))
-        val testObservable = detailsRepositoryUseCase.buildUseCaseObservable(param).test()
+        val testObservable = detailsRepositoryUseCase.execute(param).test()
         testObservable.assertComplete()
     }
 
     @Test(expected = IllegalArgumentException::class)
     fun fetchRepositoryDetailsExceptionTest(){
         mockGatewayCall(any(), any(),Observable.just(DataFactory.makeProject()))
-        val testObserver = detailsRepositoryUseCase.buildUseCaseObservable().test()
+        val testObserver = detailsRepositoryUseCase.execute().test()
         testObserver.assertComplete()
     }
 
