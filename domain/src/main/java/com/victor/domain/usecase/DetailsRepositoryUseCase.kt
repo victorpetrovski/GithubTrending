@@ -10,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by victor on 10/5/18
  */
-class DetailsRepositoryUseCase @Inject constructor(
+open class DetailsRepositoryUseCase @Inject constructor(
         private val schedulers: Schedulers,
         private val repositoryGateway: GithubRepositoryGateway
 ) : UseCase<GithubRepositoryEntity,DetailsRepositoryUseCase.Params>(schedulers) {

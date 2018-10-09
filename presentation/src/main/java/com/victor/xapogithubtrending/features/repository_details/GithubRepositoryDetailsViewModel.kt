@@ -22,6 +22,8 @@ class GithubRepositoryDetailsViewModel @Inject constructor(
 
     private  var currentRepository : RepositoryView? = null
 
+    fun getCurrentRepository() = currentRepository
+
     fun getLiveData() = liveData
 
     fun loadGithubRepositories( ownerName : String, repoName : String){
