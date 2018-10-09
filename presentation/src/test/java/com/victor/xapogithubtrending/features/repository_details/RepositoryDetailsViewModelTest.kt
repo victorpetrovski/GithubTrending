@@ -94,17 +94,4 @@ class RepositoryDetailsViewModelTest {
         verify(observer).onChanged(ViewResource(ViewState.LOADING, null, null))
         verify(observer).onChanged(ViewResource(ViewState.SUCCESS, githubRepositoryDetailsViewModel.getCurrentRepository(), null))
     }
-
-//    @Test
-//    fun viewModelUseCaseErrorReturn(){
-//        val error = Throwable()
-//
-//        whenever(trendingRepositoriesUseCase.execute())
-//                .thenReturn(Observable.error(error))
-//
-//        githubRepositoryListViewModel.loadGithubRepositories()
-//
-//        verify(observer).onChanged(ViewResource(ViewState.LOADING, githubRepositoryListViewModel.getRepositoryList(), null))
-//        verify(observer).onChanged(ViewResource(ViewState.ERROR, null, error.localizedMessage))
-//    }
 }
